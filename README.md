@@ -22,4 +22,4 @@ Con esto claro, veamos cada parte que separé: todas llevan un mismo orden y un 
 Separándolo en tres partes de la siguiente manera:
 | Letra | Ubicación letra respecto abecedario  | Ubicación letra respecto sub ubicación del abecedario  | Orden final de letra respecto a palabra | 
 | ----- | ------------------------------------ | ------------------------------------------------------ | --------------------------------------- |
-| G     | _*_|_*|__|_*|*                | 8t4aZH                                         |0                               |
+| G     |` _*_|_*|__|_*|* `               |` 8t4aZH    `                                     |`0 `                              |
