@@ -53,3 +53,38 @@ Dándome un listado similar a esto:
 ['ú', 'Á', 'É', 'Í']
 ['Ó', 'Ú', ' ', '-']
 ```
+Ya teniendo esta división de grupos, lo que sigue es crear strings súper raras para poder clasificarlos, así es, ¡sin una aparente lógica! De ahí nace:
+```python
+self.pre_grps = ['_','|_','|_|', '|_|_*', '|_|_|', '|_|_|*', '_|*_|_|*', '_*_|_*|__|', '_*_|_*|__|_*|*', '*|_*_|_*|__|_*|*_']
+self.grps = self.pre_grps
+#En esta parte en realidad me dio flojera poner más Strings, así que dupliqué cada string sobre sí mismo
+for o in range(len(self.pre_grps)):
+    self.grps.append(self.pre_grps[o]*2)
+```
+Con esto logrado, lo que sigue es asignar cada string súper rara a cada **subgrupo**
+```python
+['a', 'b', 'c', 'd'] _
+['e', 'f', 'g', 'h'] |_
+['i', 'j', 'k', 'l'] |_|
+['m', 'n', 'o', 'p'] |_|_*
+['q', 'r', 's', 't'] |_|_|
+['u', 'v', 'w', 'x'] |_|_|*
+['y', 'z', 'A', 'B'] _|*_|_|*
+['C', 'D', 'E', 'F'] _*_|_*|__|
+['G', 'H', 'I', 'J'] _*_|_*|__|_*|*
+['K', 'L', 'M', 'N'] *|_*_|_*|__|_*|*_
+['O', 'P', 'Q', 'R'] __
+['S', 'T', 'U', 'V'] |_|_
+['W', 'X', 'Y', 'Z'] |_||_|
+['0', '1', '2', '3'] |_|_*|_|_*
+['4', '5', '6', '7'] |_|_||_|_|
+['8', '9', 'ñ', 'Ñ'] |_|_|*|_|_|*
+['á', 'é', 'í', 'ó'] _|*_|_|*_|*_|_|*
+['ú', 'Á', 'É', 'Í'] _*_|_*|__|_*_|_*|__|
+['Ó', 'Ú', ' ', '-'] _*_|_*|__|_*|*_*_|_*|__|_*|*
+```
+Así que sí, de esta forma sencilla ya sacamos la primera columna de la anterior tabla y podemos saber el **subgrupo** al cual pertenece esa letra.
+
+| Letra | Ubicación letra respecto abecedario  | **Subgrupo** |
+| ----- | ------------------------------------ | ------------ |
+| G     |`_*_\|_*\|__\|_*\|*`                  | ```python ['G', 'H', 'I', 'J'] ``` |
