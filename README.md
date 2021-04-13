@@ -27,11 +27,12 @@ Separándolo en tres partes de la siguiente manera:
 Pero bien, ¿qué significan tantos simbolitos?
 Pues, primero, tenemos que saber acerca de la cantidad de símbolos (también conocidas como letras) que tiene nuestro abecedario en español.
 Ahí es donde entra esta bella línea que me agrega las letras mayúsculas, minúsculas, dígitos y caracteres especiales:
-
-
 ```python
 self.abc = list(string.ascii_lowercase) + list(string.ascii_uppercase) + list(string.digits) + ['ñ','Ñ','á','é','í','ó','ú','Á','É','Í','Ó','Ú' ,' ','-']
 ```
+Haciendo un conteo me da un total de 76 caracteres, que para mi suerte es divisible por 4, haciendo así que pueda crear **subgrupos**, al hacer la división me da un total de 19 **subgrupos**, cada uno conformado de 4 caracteres, obviamente.
+Dándome un listado similar a esto:
+```python
 ['a', 'b', 'c', 'd']
 ['e', 'f', 'g', 'h']
 ['i', 'j', 'k', 'l']
@@ -51,3 +52,4 @@ self.abc = list(string.ascii_lowercase) + list(string.ascii_uppercase) + list(st
 ['á', 'é', 'í', 'ó']
 ['ú', 'Á', 'É', 'Í']
 ['Ó', 'Ú', ' ', '-']
+```
