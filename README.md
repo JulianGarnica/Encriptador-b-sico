@@ -5,6 +5,7 @@ Este es un proyecto personal y de aprendizaje para el desarrollo de un encriptad
 
 ## Funcionamiento:
 Ejemplo de encriptado de palabra "Gatito":
+
 `_,nZ8fI8,1\|_|,6WDzqn,3\|_|_*,YWlIoR,5\|_|_|,FYaTQJ,2\|_|_|,9r3q4M,4\_*_|_*|__|_*|*,8t4aZH,0`
 
 El patrón que sigue este encriptado es el siguiente:
@@ -20,7 +21,7 @@ Sigamos con el ejemplo con "Gatito":
 Con esto claro, veamos cada parte que separé: todas llevan un mismo orden y un patrón de igual manera. Esta vez se separa con `,`.
 
 Separándolo en tres partes de la siguiente manera:
-| Letra | Ubicación letra respecto abecedario  | Ubicación letra respecto sub ubicación del abecedario  | Orden final de letra respecto a palabra | 
+| Letra | Ubicación letra respecto abecedario  | Ubicación letra respecto subgrupo del abecedario  | Orden final de letra respecto a palabra | 
 | ----- | ------------------------------------ | ------------------------------------------------------ | --------------------------------------- |
 | G     |`_*_\|_*\|__\|_*\|*`                  |`8t4aZH`                                                |`0 `                                     |
 
@@ -88,3 +89,46 @@ Así que sí, de esta forma sencilla ya sacamos la primera columna de la anterio
 | Letra | Ubicación letra respecto abecedario  | **Subgrupo** |
 | ----- | ------------------------------------ | ------------ |
 | G     |`_*_\|_*\|__\|_*\|*`                  | ``` ['G', 'H', 'I', 'J'] ``` |
+
+La siguiente columna de **Ubicación letra respecto subgrupo del abecedario** es sencillamente una Seed de un número pseudoaleatorio el cual siempre dará la posición de la letra respecto al subgrupo que mostramos anteriormente.
+En el ejemplo con la letra G, esta letra se encuentra ubicada en la primera posición del subgrupo, por lo cual, podemos suponer que `8t4aZH == 0` (No de forma literal, OJO).
+
+La forma en la que se obtiene esta semilla es un poco simple pero efectiva:
+
+```python
+while validado == False:
+    letra_encrpt = []
+    for a in range(cant_letras_encrp):
+        letra_encrpt.append(random.choice(self.abc_encrypt))
+
+    random.seed("".join(letra_encrpt))
+
+    if random.randint(0,self.elem_grupo) == p_r_grp:
+        validado = True
+```
+
+De aquí se forman estas siguientes líneas:
+
+```python
+random.seed(semilla_letra)
+pos_letra = random.randint(0,self.elem_grupo)
+```
+Suponemos que 
+- semilla_letra = 8t4aZH
+- self.elem_grupo = 4 (porque son 4 elementos en cada **subgrupo**)
+Al ejecutar esas líneas, la generación pseudoaleatoria siempre nos dará 0, cumpliendo con la posición anteriormente explicada.
+
+Y para finalizar, el último número es la posición de esa letra en la palabra o frase escrita por el usuario, así que sí, sería tipo:
+
+- G ->  `0`
+- a ->  `1`
+- t ->  `2`
+- i ->  `3`
+- t ->  `4`
+- o ->  `5`
+
+Estos procesos se repiten dependiendo de la cantidad de caracteres que existan, de esta forma terminamos felices con nuestro encriptado.
+¡Ahora te invito a que analices el desencriptado! Que en realidad es bastante más sencillo de hacer y con lo dicho anteriormente es relativamente sencillo de llevar a cabo.
+
+¡Saludos Gatunos!
+![dce92ad-a4d890fb-40ec-4b0b-927d-c675f40053d1](https://user-images.githubusercontent.com/23285433/114487993-291cec00-9bd6-11eb-9b78-cfea88296466.png)
