@@ -87,4 +87,4 @@ Así que sí, de esta forma sencilla ya sacamos la primera columna de la anterio
 
 | Letra | Ubicación letra respecto abecedario  | **Subgrupo** |
 | ----- | ------------------------------------ | ------------ |
-| G     |`_*_\|_*\|__\|_*\|*`                  | ```python ['G', 'H', 'I', 'J'] ``` |
+| G     |`_*_\|_*\|__\|_*\|*`                  | ``` ['G', 'H', 'I', 'J'] ``` |
