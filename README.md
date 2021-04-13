@@ -23,3 +23,31 @@ Separándolo en tres partes de la siguiente manera:
 | Letra | Ubicación letra respecto abecedario  | Ubicación letra respecto sub ubicación del abecedario  | Orden final de letra respecto a palabra | 
 | ----- | ------------------------------------ | ------------------------------------------------------ | --------------------------------------- |
 | G     |`_*_\|_*\|__\|_*\|*`                  |`8t4aZH`                                                |`0 `                                     |
+
+Pero bien, ¿qué significan tantos simbolitos?
+Pues, primero, tenemos que saber acerca de la cantidad de símbolos (también conocidas como letras) que tiene nuestro abecedario en español.
+Ahí es donde entra esta bella línea que me agrega las letras mayúsculas, minúsculas, dígitos y caracteres especiales:
+
+
+```python
+self.abc = list(string.ascii_lowercase) + list(string.ascii_uppercase) + list(string.digits) + ['ñ','Ñ','á','é','í','ó','ú','Á','É','Í','Ó','Ú' ,' ','-']
+```
+['a', 'b', 'c', 'd']
+['e', 'f', 'g', 'h']
+['i', 'j', 'k', 'l']
+['m', 'n', 'o', 'p']
+['q', 'r', 's', 't']
+['u', 'v', 'w', 'x']
+['y', 'z', 'A', 'B']
+['C', 'D', 'E', 'F']
+['G', 'H', 'I', 'J']
+['K', 'L', 'M', 'N']
+['O', 'P', 'Q', 'R']
+['S', 'T', 'U', 'V']
+['W', 'X', 'Y', 'Z']
+['0', '1', '2', '3']
+['4', '5', '6', '7']
+['8', '9', 'ñ', 'Ñ']
+['á', 'é', 'í', 'ó']
+['ú', 'Á', 'É', 'Í']
+['Ó', 'Ú', ' ', '-']
